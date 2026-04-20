@@ -93,11 +93,11 @@
       </div>
       <!-- Action buttons -->
       <div class="flex items-start">
-        <div class="flex-1 flex flex-col gap-1 items-center cursor-pointer">
+        <div class="flex-1 flex flex-col gap-1 items-center cursor-pointer" onclick="document.querySelector('.price-evolution').scrollIntoView({behavior:'smooth'})">
           <img src="img/icons/icon-preisverlauf.svg" width="24" height="24" alt="">
           <span class="text-xs text-link whitespace-nowrap">Preisverlauf</span>
         </div>
-        <div class="flex-1 flex flex-col gap-1 items-center border-l border-[#8ba1b6] cursor-pointer">
+        <div class="flex-1 flex flex-col gap-1 items-center border-l border-[#8ba1b6] cursor-pointer" id="preiswecker-trigger">
           <img src="img/icons/icon-preiswecker.svg" width="24" height="24" alt="">
           <span class="text-xs text-link whitespace-nowrap">Preiswecker</span>
         </div>
@@ -117,7 +117,7 @@
     <div class="text-sm text-ink">Hersteller: Philips • Farbe: schwarz</div>
 
     <!-- Variant selector -->
-    <div class="flex items-center gap-2 border border-[#67829D] rounded-md px-2 py-2 cursor-pointer">
+    <div class="variant-selector flex items-center gap-2 border border-[#67829D] rounded-md px-2 py-2 cursor-pointer">
       <div class="flex-1 flex flex-col text-sm leading-[1.4]">
         <span class="text-ink-weak">Variante:</span>
         <span class="text-ink">EP2334/10 Schwarz</span>
@@ -135,7 +135,7 @@
     </div>
 
     <!-- CTA button -->
-    <button class="flex items-center justify-center w-full h-10 bg-secondary text-white text-lg font-medium border-none rounded-md cursor-pointer">
+    <button class="flex items-center justify-center w-full h-10 bg-secondary text-white text-lg font-medium border-none rounded-md cursor-pointer" onclick="document.querySelector('.price-comparaison').scrollIntoView({behavior:'smooth'})">
       6 Angebote ab 375,53 €
     </button>
   </div>
@@ -158,17 +158,17 @@
       <!-- Rating row -->
       <div class="flex items-center gap-1">
         <span class="text-base font-bold text-ink">4,5</span>
-        <div class="flex items-start pr-[3px]">
+        <div class="flex items-start pr-[3px] rating-row">
           <div class="shrink-0 size-6 -mr-[3px]"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
           <div class="shrink-0 size-6 -mr-[3px]"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
           <div class="shrink-0 size-6 -mr-[3px]"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
           <div class="shrink-0 size-6 -mr-[3px]"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
           <!-- half star -->
           <div class="shrink-0 -mr-[3px]">
-            <svg class="w-6 h-6" viewBox="0 0 24 24">
-              <defs><clipPath id="half-bew"><rect x="0" y="0" width="12" height="24"/></clipPath></defs>
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E0E0E0"/>
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#EB6800" clip-path="url(#half-bew)"/>
+            <svg class="w-6 h-6" viewBox="0 0 18 18">
+              <defs><clipPath id="half-bew"><rect x="0" y="0" width="9" height="18"/></clipPath></defs>
+              <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#E0E0E0" stroke="#854913" stroke-width="0.5" stroke-linejoin="round"/>
+              <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#FFA41C" clip-path="url(#half-bew)"/>
             </svg>
           </div>
         </div>
@@ -452,19 +452,19 @@
   <div class="text-xs text-ink-weak leading-[1.5] mb-3.5">Preisentwicklung der letzten 90 Tage.<br>Gebrauchtangebote nicht enthalten.</div>
 
   <!-- Chart card -->
-  <div class="rounded-[6px] overflow-hidden mb-3.5" style="box-shadow:0 5px 12px -3px rgba(96,98,100,.06),0 2px 1px 0 rgba(96,98,100,.08);">
+  <div class="rounded-[6px] overflow-hidden mb-3.5">
     <div class="flex gap-1 px-2 pt-2" style="height:166px;">
       <!-- Y-axis labels -->
       <div class="flex flex-col justify-between shrink-0 pb-4" style="width:30px;">
-        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">330 €</span>
+        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">380 €</span>
+        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">360 €</span>
+        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">340 €</span>
         <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">320 €</span>
-        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">310 €</span>
         <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">300 €</span>
-        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">290 €</span>
         <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">280 €</span>
-        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">270 €</span>
         <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">260 €</span>
-        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">250 €</span>
+        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">240 €</span>
+        <span class="text-[12px] text-ink-weak text-right leading-none whitespace-nowrap">220 €</span>
       </div>
       <!-- Chart column -->
       <div class="flex-1 flex flex-col min-w-0">
@@ -521,7 +521,7 @@
     </p>
   </div>
 
-  <button class="flex items-center justify-center w-full h-10 bg-surface-100 text-ink text-sm font-medium border border-ink-muted rounded-[6px] cursor-pointer">Alle Angebote ansehen</button>
+  <button class="flex items-center justify-center w-full h-10 bg-surface-100 text-ink text-sm font-medium border border-ink-muted rounded-[6px] cursor-pointer" onclick="document.querySelector('.price-comparaison').scrollIntoView({behavior:'smooth'})">Alle Angebote ansehen</button>
 </section>
 
 <script>
@@ -530,10 +530,10 @@
   // starts ~328€, oscillates down, sharp V-dip to ~259€, sharp recovery to ~320€, then plateau ~308€
   var P = [328,328,323,323,323,321,321,321,322,317,
            317,317,317,312,312,312,312,312,315,299,
-           274,270,267,264,261,259,259,259,294,294,
-           294,280,307,312,316,309,305,307,305];
+           274,233,233,264,261,259,259,259,294,294,
+           294,280,307,312,316,309,345,370,375];
 
-  var MIN = 250, MAX = 330, W = 300, H = 145;
+  var MIN = 180, MAX = 380, W = 300, H = 200;
 
   function toX(i)  { return (i / (P.length - 1)) * W; }
   function toY(p)  { return ((MAX - p) / (MAX - MIN)) * H; }
@@ -954,62 +954,188 @@
 
 <!-- ═══════════════════════════════════════ DATENBLATT ══════════════════════════════════ -->
 <section class="bg-white px-3 py-4">
-  <div class="font-display text-[20px] font-normal leading-[1.2] text-ink mb-3">Datenblatt</div>
-  <table class="w-full border-collapse">
-    <tr><th class="text-left text-xs font-extrabold text-ink bg-surface-100 px-2.5 py-2 border-b border-stroke-subtle" colspan="2">Farbe</th></tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Gehäusefarbe</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">schwarz</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Herstellerfarbe</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">schwarz</td>
-    </tr>
-    <tr><th class="text-left text-xs font-extrabold text-ink bg-surface-100 px-2.5 py-2 border-b border-stroke-subtle" colspan="2">Ausstattung</th></tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Anzahl Mahlwerke</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">1</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Ausstattung</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">Display, Milchaufschäumer, Milchbehälter</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Mahlstufen</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">5</td>
-    </tr>
-    <tr><th class="text-left text-xs font-extrabold text-ink bg-surface-100 px-2.5 py-2 border-b border-stroke-subtle" colspan="2">Technische Daten</th></tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Leistung</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">1.500 W</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Wassertank</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">1,8 Liter</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] border-b border-stroke-subtle align-top w-[48%]">Druck</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] border-b border-stroke-subtle align-top">15 bar</td>
-    </tr>
-    <tr>
-      <td class="text-[13px] text-ink-weak px-2.5 py-[9px] align-top w-[48%]">Gewicht</td>
-      <td class="text-[13px] text-ink px-2.5 py-[9px] align-top">6,5 kg</td>
-    </tr>
-  </table>
-  <button class="flex items-center justify-center w-full h-11 mt-3 border-[1.5px] border-stroke rounded-lg text-sm font-bold text-ink bg-white cursor-pointer">Mehr anzeigen</button>
+  <div class="font-display text-[20px] font-normal leading-[1.2] text-ink mb-2">Datenblatt</div>
+
+  <!-- Accordion wrapper -->
+  <div class="relative" id="datasheet-body" style="max-height:250px;overflow:hidden;transition:max-height 0.4s ease;">
+
+    <!-- Card with shadow -->
+    <div class="rounded-[6px] overflow-hidden shadow-[0px_5px_12px_0px_rgba(96,98,100,0.06),0px_2px_1px_0px_rgba(96,98,100,0.08)]">
+      <table class="w-full border-collapse product-datasheet">
+
+        <!-- Farbe -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Farbe</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Gehäusefarbe</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">schwarz</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Herstellerfarbe</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">schwarz</td>
+        </tr>
+
+        <!-- Ausstattung -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Ausstattung</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Anzahl Mahlwerke</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">1</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Ausstattung</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Display, Milchaufschäumer, Milchbehälter, Wasserfilter, verstellbarer Kaffeeauslauf</td>
+        </tr>
+
+        <!-- Bauform -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Bauform</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Bauart</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">freistehend</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Mahlwerk</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Keramikmahlwerk</td>
+        </tr>
+
+        <!-- Abmessungen -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Abmessungen</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Breite</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">25 cm</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Höhe</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">43 cm</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Tiefe</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">37 cm</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Kabellänge</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">1,00 m</td>
+        </tr>
+
+        <!-- Kapazität -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Kapazität</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Bohnenbehältervolumen</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">275 g</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Milchbehältervolumen</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">260 ml</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Wasserbehältervolumen</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">1,8 l</td>
+        </tr>
+
+        <!-- Eignung -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Eignung</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Geeignete Kaffeeart</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Kaffeebohnen</td>
+        </tr>
+
+        <!-- Allgemein -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Allgemein</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Modelljahr</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">2023</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Produktlinie</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Philips 3300 Series</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Varianten</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">mit LatteGo Milchsystem</td>
+        </tr>
+
+        <!-- Material -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Material</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Gehäusematerial</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Kunststoff</td>
+        </tr>
+
+        <!-- Leistungsmerkmale -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Leistungsmerkmale</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Pumpendruck</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">15 bar</td>
+        </tr>
+
+        <!-- Lieferumfang -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Lieferumfang</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Mitgeliefertes Zubehör</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Kaffeemesslöffel, Teststreifen, Wasserfilter</td>
+        </tr>
+
+        <!-- Gewicht -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Gewicht</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Gesamtgewicht</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">8,0 kg</td>
+        </tr>
+
+        <!-- Funktionalitäten -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Funktionalitäten</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Funktionen</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Abschaltautomatik, Aromafunktion, Entkalkungsfunktion, Heißwasserfunktion, Mahlgradeinstellung, Temperatureinstellung</td>
+        </tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top w-[48%]">Kaffeespezialitäten</td>
+          <td class="text-[14px] text-ink px-2 py-2 border-b border-stroke-subtle align-top">Cappuccino, Cold Brew, Espresso, Heißwasser, Latte Macchiato, Milchkaffee</td>
+        </tr>
+
+        <!-- Energiemerkmale -->
+        <tr><th class="text-left text-[14px] font-bold text-ink bg-surface-200 px-2 h-9 border-b border-stroke-subtle" colspan="2">Energiemerkmale</th></tr>
+        <tr>
+          <td class="text-[14px] text-ink px-2 py-2 align-top w-[48%]">Leistungsaufnahme</td>
+          <td class="text-[14px] text-ink px-2 py-2 align-top">1 500 W</td>
+        </tr>
+
+      </table>
+    </div><!-- /card -->
+
+    <!-- Fade overlay (hidden when open) -->
+    <div id="datasheet-fade" class="pointer-events-none absolute bottom-0 left-0 right-0 h-14" style="background:linear-gradient(to bottom, transparent, white);"></div>
+
+  </div><!-- /accordion wrapper -->
+
+  <button id="datasheet-btn" onclick="(function(){
+    var body = document.getElementById('datasheet-body');
+    var fade = document.getElementById('datasheet-fade');
+    var btn  = document.getElementById('datasheet-btn');
+    var isOpen = body.getAttribute('data-open') === '1';
+    if (isOpen) {
+      body.style.maxHeight = '250px';
+      fade.style.display = '';
+      btn.textContent = 'Mehr anzeigen';
+      body.setAttribute('data-open', '0');
+    } else {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      fade.style.display = 'none';
+      btn.textContent = 'Weniger anzeigen';
+      body.setAttribute('data-open', '1');
+    }
+  })()" class="flex items-center justify-center w-full h-[40px] mt-2 border border-[#67829d] rounded-[6px] text-[14px] font-medium text-ink bg-surface-100 cursor-pointer">Mehr anzeigen</button>
 </section>
 
 <div class="h-2"></div>
 
 <!-- ═══════════════════════════════════════ VERWANDTE SUCHEN ════════════════════════════ -->
 <section class="bg-white px-3 py-4">
-  <div class="text-base font-extrabold text-ink mb-3">Verwandte Suchen</div>
-  <div class="flex flex-wrap gap-2">
-    <a href="#" class="inline-flex items-center h-8 px-3.5 border-[1.5px] border-stroke rounded-2xl text-xs text-ink font-semibold bg-white cursor-pointer">Kaffeevollautomaten</a>
-    <a href="#" class="inline-flex items-center h-8 px-3.5 border-[1.5px] border-stroke rounded-2xl text-xs text-ink font-semibold bg-white cursor-pointer">Manuelle Dampfdüse</a>
-    <a href="#" class="inline-flex items-center h-8 px-3.5 border-[1.5px] border-stroke rounded-2xl text-xs text-ink font-semibold bg-white cursor-pointer">Kaffeevollautomaten bis 500 Euro</a>
-    <a href="#" class="inline-flex items-center h-8 px-3.5 border-[1.5px] border-stroke rounded-2xl text-xs text-ink font-semibold bg-white cursor-pointer">Smeg Espressomaschinen</a>
-    <a href="#" class="inline-flex items-center h-8 px-3.5 border-[1.5px] border-stroke rounded-2xl text-xs text-ink font-semibold bg-white cursor-pointer">Automatischer Milchschaum</a>
+  <div class="font-display text-[20px] font-normal leading-[1.2] text-ink mb-2">Verwandte Suchen</div>
+  <div class="flex flex-wrap gap-2 link-list">
+    <a href="#" class="inline-flex items-center py-[7px] px-[13px] border border-[#4d6c89] rounded-[15px] text-[14px] text-ink font-normal bg-white whitespace-nowrap cursor-pointer">Kaffeevollautomaten</a>
+    <a href="#" class="inline-flex items-center py-[7px] px-[13px] border border-[#4d6c89] rounded-[15px] text-[14px] text-ink font-normal bg-white whitespace-nowrap cursor-pointer">Manuelle Dampfdüse</a>
+    <a href="#" class="inline-flex items-center py-[7px] px-[13px] border border-[#4d6c89] rounded-[15px] text-[14px] text-ink font-normal bg-white whitespace-nowrap cursor-pointer">Kaffeevollautomaten bis 500 Euro</a>
+    <a href="#" class="inline-flex items-center py-[7px] px-[13px] border border-[#4d6c89] rounded-[15px] text-[14px] text-ink font-normal bg-white whitespace-nowrap cursor-pointer">Smeg Espressomaschinen</a>
+    <a href="#" class="inline-flex items-center py-[7px] px-[13px] border border-[#4d6c89] rounded-[15px] text-[14px] text-ink font-normal bg-white whitespace-nowrap cursor-pointer">Automatischer Milchschaum</a>
   </div>
 </section>
 
@@ -1017,53 +1143,111 @@
 
 <!-- ═══════════════════════════════════════ FOOTER ══════════════════════════════════════ -->
 <footer>
-  <div class="bg-surface-200 px-4 py-5">
-    <div class="flex gap-2.5 items-start mb-4">
-      <div class="text-lg shrink-0 mt-px">🛒</div>
-      <div class="text-xs text-ink-weak leading-[1.7]">
+
+  <!-- Disclaimer block -->
+  <div class="bg-surface-100 px-[22px] py-[32px] flex flex-col gap-[16px] affiliate-wrapper">
+
+    <!-- Affiliate notice -->
+    <div class="flex gap-[4px] items-start">
+      <div class="relative shrink-0 size-[24px] mt-px">
+        <img src="img/icons/tb-icon-cart.svg" alt="" class="absolute inset-0 size-full object-cover">
+        <div class="absolute inset-0 bg-[#3c5c7b] mix-blend-lighten"></div>
+      </div>
+      <p class="text-[14px] text-ink-weak leading-[1.4]">
         Wir arbeiten unabhängig und neutral. Klicken Sie auf ein verlinktes Shop-Angebot, unterstützen Sie uns dabei. Wir erhalten dann ggf. eine Vergütung.
-        <br/><a href="#" class="text-link font-semibold">Erfahren Sie, wie sich Testberichte finanziert</a>
+        <br/><a href="#" class="text-link">Erfahren Sie, wie sich Testberichte finanziert</a>
+      </p>
+    </div>
+
+    <!-- Price disclaimer -->
+    <div class="flex gap-[8px] items-start pl-[12px]">
+      <p class="text-[18px] text-primary font-bold shrink-0 not-italic" style="font-family:'Times New Roman',serif;">*</p>
+      <div class="flex flex-col gap-[4px]">
+        <p class="text-[14px] text-ink-weak leading-[1.4]">
+          Alle Preise verstehen sich inkl. gesetzlicher MwSt. Die Versandkosten hängen von der gewählten Versandart ab, es handelt sich um Mindestkosten. Die Angebotsinformationen basieren auf den Angaben des jeweiligen Shops und werden über automatisierte Prozesse aktualisiert. Eine Aktualisierung in Echtzeit findet nicht statt, so dass der Preis seit der letzten Aktualisierung gestiegen sein kann. Maßgeblich ist der tatsächliche Preis, den der Shop zum Zeitpunkt des Kaufs auf seiner Webseite anbietet.
+        </p>
+        <a href="#" class="text-[14px] font-medium text-link">Mehr Infos dazu in unseren FAQs</a>
       </div>
     </div>
-    <div class="flex gap-2 items-start">
-      <div class="text-sm font-extrabold text-ink shrink-0">*</div>
-      <div class="text-xs text-ink-weak leading-[1.7]">
-        Alle Preise verstehen sich inkl. gesetzlicher MwSt. Die Versandkosten hängen von der gewählten Versandart ab, es handelt sich um Mindestkosten. Die Angebotsinformationen basieren auf den Angaben des jeweiligen Shops und werden über automatisierte Prozesse aktualisiert. Eine Aktualisierung in Echtzeit findet nicht statt, so dass der Preis seit der letzten Aktualisierung gestiegen sein kann. Maßgeblich ist der tatsächliche Preis, den der Shop zum Zeitpunkt des Kaufs auf seiner Webseite anbietet.
-        <br/><br/><a href="#" class="text-link font-semibold">Mehr Infos dazu in unseren FAQs</a>
-      </div>
-    </div>
+
   </div>
 
-  <div class="bg-surface-200 px-4 pt-6 pb-8 border-t border-stroke-bold">
-    <div class="text-[22px] font-extrabold italic mb-3">
-      <em class="text-primary">Test</em><span class="text-ink font-normal">berichte</span>
+  <!-- Nav / logo block -->
+  <div class="bg-surface-200 px-[8px] py-[22px] footer-links">
+
+    <!-- Logo -->
+    <div class="mb-[19px]">
+      <img src="img/logo.svg" alt="Testberichte" width="170" height="24">
     </div>
-    <div class="flex gap-2.5 mb-6">
-      <div class="w-[34px] h-[34px] rounded-full bg-stroke flex items-center justify-center text-base text-ink-weak cursor-pointer">f</div>
-      <div class="w-[34px] h-[34px] rounded-full bg-stroke flex items-center justify-center text-base text-ink-weak cursor-pointer">◎</div>
-      <div class="w-[34px] h-[34px] rounded-full bg-stroke flex items-center justify-center text-base text-ink-weak cursor-pointer">𝕏</div>
-      <div class="w-[34px] h-[34px] rounded-full bg-stroke flex items-center justify-center text-base text-ink-weak cursor-pointer">✉</div>
+
+    <!-- Social icons -->
+    <div class="flex gap-[7px] mb-[40px]">
+      <!-- Facebook -->
+      <a href="#" class="w-[32px] h-[32px] shrink-0 cursor-pointer">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#3C5C7B"/>
+          <path d="M17.2 16.8H19l.4-2.4h-2.2v-1.2c0-.64.32-1.2 1.28-1.2H19.4V9.84S18.56 9.6 17.76 9.6c-2.16 0-3.36 1.28-3.36 3.6v1.2H12.4V16.8h2v6h2.8v-6z" fill="white"/>
+        </svg>
+      </a>
+      <!-- Instagram -->
+      <a href="#" class="w-[32px] h-[32px] shrink-0 cursor-pointer">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#3C5C7B"/>
+          <rect x="10" y="10" width="12" height="12" rx="3.5" stroke="white" stroke-width="1.5" fill="none"/>
+          <circle cx="16" cy="16" r="3" stroke="white" stroke-width="1.5" fill="none"/>
+          <circle cx="19.5" cy="12.5" r="0.75" fill="white"/>
+        </svg>
+      </a>
+      <!-- X / Twitter -->
+      <a href="#" class="w-[32px] h-[32px] shrink-0 cursor-pointer">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#3C5C7B"/>
+          <path d="M10 10.5l4.8 6.4L10 22h1.5l3.6-4.2 3 4.2H22l-5-6.7 4.5-5.3H20l-3.3 3.8-2.8-3.8H10z" fill="white"/>
+        </svg>
+      </a>
+      <!-- Email -->
+      <a href="#" class="w-[32px] h-[32px] shrink-0 cursor-pointer">
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#3C5C7B"/>
+          <rect x="9" y="12" width="14" height="10" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+          <path d="M9 13l7 5 7-5" stroke="white" stroke-width="1.5" fill="none"/>
+        </svg>
+      </a>
     </div>
-    <div class="flex flex-col gap-0.5 mb-6">
-      <a href="#" class="text-sm text-ink-weak py-1.5">Über uns</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Presse</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Karriere</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Partnerbereich</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Testmagazine</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">FAQ</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Unser Magazin</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Feedback</a>
-      <a href="#" class="text-sm text-ink-weak py-1.5">Kontakt</a>
+
+    <!-- Nav links — group 1 -->
+    <div class="flex flex-col mb-[45px]">
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Über uns</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Presse</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Karriere</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Partnerbereich</a>
     </div>
-    <div class="h-px bg-stroke-bold mb-4"></div>
-    <div class="flex flex-wrap gap-y-0.5 mb-3">
-      <a href="#" class="text-[13px] text-ink-weak font-semibold py-1 pr-3">Impressum</a>
-      <a href="#" class="text-[13px] text-ink-weak font-semibold py-1 pr-3">Datenschutzerklärung</a>
-      <a href="#" class="text-[13px] text-ink-weak font-semibold py-1 pr-3">Datenschutzeinstellungen</a>
-      <a href="#" class="text-[13px] text-ink-weak font-semibold py-1 pr-3">AGB</a>
+
+    <!-- Nav links — group 2 -->
+    <div class="flex flex-col mb-[28px]">
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Testmagazine</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">FAQ</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Unser Magazin</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Feedback</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[32px]">Kontakt</a>
     </div>
-    <div class="text-xs text-ink-muted">© 2022 Producto GmbH</div>
+
+    <!-- Divider -->
+    <div class="h-px bg-stroke-bold mb-[13px]"></div>
+
+    <!-- Legal links -->
+    <div class="flex flex-wrap gap-y-0 mb-[12px]">
+      <a href="#" class="text-[16px] text-ink-weak leading-[40px] pr-4">Impressum</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[40px] pr-4">Datenschutzerklärung</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[40px] pr-4">Datenschutzeinstellungen</a>
+      <a href="#" class="text-[16px] text-ink-weak leading-[40px] pr-4">AGB</a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-[16px] text-ink-weak leading-[22px]">© 2022 Producto GmbH</div>
+
   </div>
+
 </footer>
 
 <script>
@@ -1159,6 +1343,438 @@
     window.addEventListener('mouseup',   function ()  { onDragEnd(); });
 
     goTo(0);
+  });
+})();
+</script>
+
+<!-- ══════════════════════════════════ OFFER DETAILS OVERLAY ════════════════════════════ -->
+<style>
+  #offer-details-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 42, 67, 0.9);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #offer-details-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #offer-details-panel {
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    padding: 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #offer-details-panel.is-open { transform: translateY(0); }
+  #offer-details-desc { max-height: 180px; overflow-y: auto; padding-right: 8px; }
+</style>
+
+<div id="offer-details-backdrop">
+  <div id="offer-details-panel">
+
+    <!-- Close -->
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
+      <button id="offer-details-close" style="width:44px;height:44px;border-radius:50%;background:#f5f7fa;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Title -->
+    <p id="od-title" style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;color:#102A43;line-height:1.2;margin-bottom:16px;"></p>
+
+    <!-- Description -->
+    <div id="offer-details-desc" style="margin-bottom:16px;">
+      <p id="od-desc" style="font-size:12px;color:#3c5c7b;line-height:1.4;"></p>
+    </div>
+
+    <!-- Footer: thumb + logo + price -->
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;">
+      <div style="width:50px;height:50px;flex-shrink:0;">
+        <img id="od-thumb" src="" width="50" height="50" style="width:100%;height:100%;object-fit:contain;" alt="">
+      </div>
+      <div style="flex:1;min-width:0;">
+        <img id="od-logo" src="" style="height:36px;width:88px;object-fit:contain;object-position:left;" alt="">
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;text-align:right;flex-shrink:0;">
+        <div style="display:flex;gap:3px;align-items:baseline;">
+          <span id="od-price" style="font-size:20px;font-weight:600;color:#102A43;line-height:1.2;"></span>
+          <span style="font-size:20px;font-weight:500;color:#102A43;line-height:1.2;">€</span>
+        </div>
+        <span id="od-shipping" style="font-size:11px;font-weight:500;color:#3c5c7b;line-height:1.4;white-space:nowrap;"></span>
+        <div style="display:flex;gap:4px;align-items:flex-start;margin-top:4px;">
+          <img id="od-truck" src="" width="16" height="16" style="flex-shrink:0;margin-top:1px;" alt="">
+          <span id="od-delivery" style="font-size:12px;color:#102A43;line-height:1.3;text-align:left;"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <button id="offer-details-shop" style="width:100%;max-width:308px;height:40px;background:#3c5c7b;color:white;font-size:14px;font-weight:500;font-family:inherit;border:none;border-radius:6px;cursor:pointer;display:block;margin:0 auto;">zum Shop</button>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var offers = [
+    {
+      title: 'Philips Series 2300 EP2336/40 – black/chrome',
+      desc: 'Der Philips Series 2300 EP2336/40 LatteGo überzeugt mit seinem innovativen LatteGo-Milchsystem, das sich in nur drei Schritten reinigt. Bereite auf Knopfdruck 5 verschiedene Kaffeespezialitäten zu – von Espresso über Cappuccino bis hin zu Latte Macchiato. Der intuitive Farb-Touchscreen macht die Zubereitung kinderleicht. Dank der AquaClean-Filterfunktion kannst du bis zu 5.000 Tassen Kaffee ohne Entkalken genießen. Der verstellbare Mahlgrad und die anpassbare Kaffeestärke sorgen für dein perfektes Geschmackserlebnis.',
+      thumb: 'img/offer-thumb-1.png', logo: 'img/logo-otto-offer.png', logoAlt: 'OTTO',
+      price: '375,53', shipping: 'zzgl. 5,99 € Versand',
+      truck: 'img/icons/icon-truck-orange.svg', delivery: '6–8 Werktage'
+    },
+    {
+      title: 'Philips EP2336/40 (EP2336/40)',
+      desc: 'Mit dem Philips EP2336/40 genießt du täglich frisch gemahlenen Kaffee auf Knopfdruck. Das LatteGo-System erzeugt cremigen Milchschaum ohne Schlauch und lässt sich unter fließendem Wasser reinigen. Die Kaffeemaschine mahlt die Bohnen frisch vor jeder Tasse und passt sich mit 12 Mahlgradstufen deinem Geschmack an. Bis zu 2 Tassen gleichzeitig zubereiten – ideal für Haushalte mit mehreren Kaffeeliebhabern.',
+      thumb: 'img/offer-thumb-2.png', logo: 'img/logo-galaxus.png', logoAlt: 'Galaxus',
+      price: '400,06', shipping: 'zzgl. 0,00 € Versand',
+      truck: 'img/icons/icon-truck-orange.svg', delivery: '4–6 Werktage'
+    },
+    {
+      title: 'Philips 2300 EP2336/40 LatteGo',
+      desc: 'Der Philips 2300 Series EP2336/40 LatteGo bietet dir das Beste aus zwei Welten: die Bequemlichkeit eines Vollautomaten und die Flexibilität einer Siebträgermaschine. Mit dem LatteGo-Milchsystem bereitest du cremigen Schaum für Cappuccino und Latte Macchiato zu. Die Maschine merkt sich deine bevorzugten Einstellungen. Das leise Keramikmahlwerk mahlt die Bohnen frisch und schonend für volles Aroma.',
+      thumb: 'img/offer-thumb-2.png', logo: 'img/logo-coolblue.png', logoAlt: 'coolblue',
+      price: '429,90', shipping: 'zzgl. 0,00 € Versand',
+      truck: 'img/icons/icon-truck-green.svg', delivery: '1 Werktag'
+    },
+    {
+      title: 'Philips Kaffeevollautomat Series 2300 – Schwarz',
+      desc: 'Der Philips Kaffeevollautomat aus der Series 2300 ist dein treuer Begleiter für perfekten Kaffeegenuss. Mit dem integrierten Keramikmahlwerk und 12 Mahlgradstufen holst du das volle Aroma aus deinen Kaffeebohnen. Das LatteGo-System sorgt für einfache Milchschaumzubereitung und leichte Reinigung. In elegantem Schwarz fügt er sich harmonisch in jede Kücheneinrichtung ein.',
+      thumb: 'img/offer-thumb-3.png', logo: 'img/logo-kaufland.png', logoAlt: 'Kaufland',
+      price: '439,90', shipping: 'zzgl. 0,00 € Versand',
+      truck: 'img/icons/icon-truck-green.svg', delivery: '1–3 Werktage'
+    },
+    {
+      title: 'Philips Series 2300 EP2336/40 Kaffeevollautomat',
+      desc: 'Erlebe mit dem Philips Series 2300 EP2336/40 erstklassigen Kaffeegenuss zu Hause. Das patentierte LatteGo-System erzeugt feinen, gleichmäßigen Milchschaum ohne Reinigungsaufwand. Dank der intuitiven Bedienung und voreingestellter Kaffeespezialitäten ist dein Lieblingsgetränk in Sekunden fertig. Das leise Keramikmahlwerk mahlt die Bohnen frisch und schonend.',
+      thumb: 'img/offer-thumb-4.png', logo: 'img/logo-ejoker.png', logoAlt: 'eJoker',
+      price: '452,28', shipping: 'zzgl. 3,99 € Versand',
+      truck: 'img/icons/icon-truck-green.svg', delivery: '4–5 Werktage'
+    },
+    {
+      title: 'Kaffeemaschine Philips Versuni Serie 2300',
+      desc: 'Die Kaffeemaschine Philips Versuni aus der Serie 2300 vereint modernes Design mit ausgezeichneter Technik. Mit dem LatteGo-System genießt du frischen Milchschaum auf Knopfdruck – leise, schnell und einfach zu reinigen. Das Keramikmahlwerk mit 12 Einstellungen garantiert optimales Aroma. Perfekt für Kaffeeenthusiasten, die Qualität und Komfort in einem Gerät suchen.',
+      thumb: 'img/offer-thumb-5.png', logo: 'img/logo-ebay.png', logoAlt: 'eBay',
+      price: '473,55', shipping: 'zzgl. 0,00 € Versand',
+      truck: 'img/icons/icon-truck-green.svg', delivery: 'Auf Lager'
+    }
+  ];
+
+  // Wire up Details links via data attribute
+  document.querySelectorAll('.offer-item').forEach(function (item, i) {
+    var detailsRow = item.querySelector('.flex.items-center.gap-1');
+    if (detailsRow) {
+      detailsRow.setAttribute('data-offer', i);
+      detailsRow.style.cursor = 'pointer';
+    }
+  });
+
+  var backdrop = document.getElementById('offer-details-backdrop');
+  var panel    = document.getElementById('offer-details-panel');
+
+  function openOfferDetails(index) {
+    var o = offers[index];
+    document.getElementById('od-title').textContent    = o.title;
+    document.getElementById('od-desc').textContent     = o.desc;
+    document.getElementById('od-thumb').src            = o.thumb;
+    document.getElementById('od-logo').src             = o.logo;
+    document.getElementById('od-logo').alt             = o.logoAlt;
+    document.getElementById('od-price').textContent    = o.price;
+    document.getElementById('od-shipping').textContent = o.shipping;
+    document.getElementById('od-truck').src            = o.truck;
+    document.getElementById('od-delivery').textContent = o.delivery;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-open');
+        panel.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeOfferDetails() {
+    backdrop.classList.remove('is-open');
+    panel.classList.remove('is-open');
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-offer]');
+    if (trigger && backdrop.contains(trigger) === false) {
+      openOfferDetails(parseInt(trigger.getAttribute('data-offer')));
+    }
+  });
+
+  document.getElementById('offer-details-close').addEventListener('click', closeOfferDetails);
+  document.getElementById('offer-details-shop').addEventListener('click', closeOfferDetails);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeOfferDetails();
+  });
+})();
+</script>
+
+<!-- ══════════════════════════════════ PREISWECKER MODAL ═════════════════════════════════ -->
+<style>
+  #preiswecker-backdrop {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 42, 67, 0.9);
+    z-index: 40;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #preiswecker-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #preiswecker-modal {
+    background: white;
+    border-radius: 8px;
+    padding: 44px 16px 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    width: calc(100% - 30px);
+    max-width: 470px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  #preiswecker-backdrop.is-open #preiswecker-modal {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  #preiswecker-modal input[type="text"],
+  #preiswecker-modal input[type="email"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #4d6c89;
+    border-radius: 6px;
+    padding: 0 15px;
+    font-size: 16px;
+    font-family: inherit;
+    color: #102A43;
+    background: white;
+    box-sizing: border-box;
+    outline: none;
+  }
+  #preiswecker-modal input[type="text"]:focus,
+  #preiswecker-modal input[type="email"]:focus {
+    border-color: #0066CC;
+    box-shadow: 0 0 0 2px rgba(0,102,204,0.15);
+  }
+</style>
+
+<div id="preiswecker-backdrop">
+  <div id="preiswecker-modal">
+
+    <!-- Close button -->
+    <button id="preiswecker-close" style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;border:1px solid #4d6c89;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Title -->
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:20px;">
+      <img src="img/icons/icon-preiswecker.svg" width="20" height="20" alt="">
+      <p style="font-size:16px;color:#102A43;line-height:1.2;">Preiswecker</p>
+    </div>
+
+    <!-- Current price -->
+    <p style="font-size:14px;color:#102A43;line-height:1.2;margin-bottom:20px;">
+      Aktuell billigster Preis: <strong style="font-weight:600;">ab 357,53 €</strong>
+    </p>
+
+    <!-- Form -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Wunschpreis input -->
+      <div style="display:flex;flex-direction:column;gap:4px;width:200px;">
+        <label style="font-size:14px;font-weight:500;color:#102A43;line-height:1.2;">Ihr Wunschpreis</label>
+        <input type="text" value="350 €">
+      </div>
+
+      <!-- Email input -->
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <label style="font-size:14px;font-weight:500;color:#102A43;line-height:1.2;">Ihre E-Mail-Adresse</label>
+          <input type="email" placeholder="">
+        </div>
+        <p style="font-size:14px;color:#102A43;line-height:1.2;">Ihre E-Mail-Adresse wird nur verwendet, um Sie darüber zu informieren, dass Ihr Wunschpreis erreicht ist.</p>
+      </div>
+
+      <!-- Checkbox + legal -->
+      <div style="display:flex;gap:8px;align-items:flex-start;">
+        <input type="checkbox" style="width:16px;height:16px;flex-shrink:0;margin-top:1px;accent-color:#0066CC;border:1px solid #4d6c89;border-radius:3px;cursor:pointer;">
+        <p style="font-size:12px;color:#102A43;line-height:1.33;letter-spacing:0.1px;">Ich habe die Nutzungsbedingungen und die Datenschutzunterrichtung zur Kenntnis genommen und akzeptiere sie.</p>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <button id="preiswecker-submit" style="margin-top:20px;width:100%;height:40px;background:#3c5c7b;color:white;font-size:18px;font-weight:500;font-family:inherit;border:none;border-radius:6px;cursor:pointer;">
+      Preiswecker stellen
+    </button>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var backdrop = document.getElementById('preiswecker-backdrop');
+  var closeBtn = document.getElementById('preiswecker-close');
+
+  function openModal() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('is-open');
+  }
+
+  document.getElementById('preiswecker-trigger').addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.getElementById('preiswecker-submit').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeModal();
+  });
+})();
+</script>
+
+<!-- ══════════════════════════════════ VARIANT OVERLAY ═══════════════════════════════════ -->
+<style>
+  #variant-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 42, 67, 0.9);
+    z-index: 40;
+  }
+  #variant-panel {
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    padding: 44px 16px 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #variant-panel.is-open { transform: translateY(0); }
+</style>
+
+<div id="variant-backdrop">
+  <div id="variant-panel">
+
+    <!-- Close button -->
+    <button id="variant-close" style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;border:1px solid #4d6c89;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Title -->
+    <p style="font-size:16px;color:#102A43;line-height:1.2;margin-bottom:8px;">Variante</p>
+
+    <!-- Variant list -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+
+      <!-- Item 1 – selected -->
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div style="width:90px;flex-shrink:0;border:2px solid #0066CC;border-radius:4px;padding:4px;display:flex;align-items:center;justify-content:center;">
+          <img src="https://www.figma.com/api/mcp/asset/c28f4f63-7b5b-46e9-a683-078c5a7d0435" width="60" height="60" style="object-fit:contain;" alt="EP2334/10 Schwarz">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+          <p style="font-size:14px;color:#102A43;line-height:1.2;">EP2334/10 Schwarz</p>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">ab 375,53 €</p>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">12</span>
+            <span style="font-size:12px;color:#102A43;">Angebote vergleichen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div style="width:90px;flex-shrink:0;border:1px solid #AEBFD1;border-radius:4px;padding:4px;display:flex;align-items:center;justify-content:center;">
+          <img src="https://www.figma.com/api/mcp/asset/7bc5b2fd-2b56-447d-ab01-7775e6588e27" width="60" height="60" style="object-fit:contain;" alt="EP2331/10 Klavierlack-Schwarz">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+          <p style="font-size:14px;color:#0066CC;line-height:1.2;">EP2331/10 Klavierlack-Schwarz</p>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">ab 395,60 €</p>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">8</span>
+            <span style="font-size:12px;color:#102A43;">Angebote vergleichen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div style="width:90px;flex-shrink:0;border:1px solid #AEBFD1;border-radius:4px;padding:4px;display:flex;align-items:center;justify-content:center;">
+          <img src="https://www.figma.com/api/mcp/asset/42de72d6-3499-4e97-b64d-6e0de434c3ec" width="60" height="60" style="object-fit:contain;" alt="EP2336/40 schwarz verchromt">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+          <p style="font-size:14px;color:#0066CC;line-height:1.2;">EP2336/40 schwarz verchromt</p>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">ab 367,00 €</p>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">4</span>
+            <span style="font-size:12px;color:#102A43;">Angebote vergleichen</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var backdrop = document.getElementById('variant-backdrop');
+  var panel    = document.getElementById('variant-panel');
+  var closeBtn = document.getElementById('variant-close');
+
+  function openOverlay() {
+    backdrop.style.display = 'block';
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        panel.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeOverlay() {
+    panel.classList.remove('is-open');
+    panel.addEventListener('transitionend', function hide() {
+      backdrop.style.display = 'none';
+      panel.removeEventListener('transitionend', hide);
+    });
+  }
+
+  document.querySelector('.variant-selector').addEventListener('click', openOverlay);
+  closeBtn.addEventListener('click', closeOverlay);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeOverlay();
   });
 })();
 </script>
