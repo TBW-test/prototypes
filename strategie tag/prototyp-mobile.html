@@ -215,11 +215,11 @@
             <img src="img/source-logo-3.png" width="18" height="18" class="object-cover w-full h-full" alt="">
           </div>
         </div>
-        <span class="text-sm text-ink-weak leading-[1.5]">Ergebnis aus 10 Quellen</span>
+        <span class="text-sm text-ink-weak leading-[1.5]">Ergebnis aus 3 Quellen</span>
       </div>
 
       <!-- Button -->
-      <button class="flex items-center justify-center w-full h-10 bg-surface-100 border border-ink-muted rounded-md text-sm font-medium text-ink cursor-pointer">Details ansehen</button>
+      <button id="ov-open-btn" class="flex items-center justify-center w-full h-10 bg-surface-100 border border-ink-muted rounded-md text-sm font-medium text-ink cursor-pointer">Details ansehen</button>
     </div>
 
   </div>
@@ -953,7 +953,7 @@
 <div class="h-2"></div>
 
 <!-- ═══════════════════════════════════════ DATENBLATT ══════════════════════════════════ -->
-<section class="bg-white px-3 py-4">
+<section id="datenblatt" class="bg-white px-3 py-4">
   <div class="font-display text-[20px] font-normal leading-[1.2] text-ink mb-2">Datenblatt</div>
 
   <!-- Accordion wrapper -->
@@ -1344,6 +1344,510 @@
 
     goTo(0);
   });
+})();
+</script>
+
+<!-- ══════════════════════════════════ OVERLAY DETAILS ═══════════════════════════════════ -->
+<style>
+  #ov-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 42, 67, 0.9);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #ov-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  #ov-panel {
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #ov-panel.is-open { transform: translateY(0); }
+  .ov-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+  .ov-faq-item.open .ov-faq-answer { max-height: 400px; }
+  .ov-faq-answer p { padding-bottom: 8px; }
+  .ov-faq-item.open .ov-faq-chevron { transform: rotate(180deg); }
+  .ov-faq-chevron { transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
+  .ov-thumb { border: 1px solid #aebfd1; border-radius: 4px; padding: 4px; box-sizing: border-box; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: white; }
+  .ov-thumb.active { border: 2px solid #3c5c7b; }
+</style>
+
+<div id="ov-backdrop">
+  <div id="ov-panel">
+
+    <!-- Sticky close bar -->
+    <div style="position:sticky;top:0;z-index:10;background:white;display:flex;justify-content:flex-end;padding:16px 16px 0;">
+      <button id="ov-close" style="width:28px;height:28px;border-radius:50%;border:1px solid #4d6c89;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div style="padding:16px;display:flex;flex-direction:column;gap:20px;">
+
+      <!-- ── Product image + title ── -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:8px;height:180px;">
+
+          <!-- Thumbnail column -->
+          <div style="width:44px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <!-- Up arrow — always reserves space, invisible until scrolled -->
+            <div id="ov-thumb-up" style="width:40px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;visibility:hidden;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <!-- Thumbs — 3 visible at a time (136px = 3×40 + 2×8) -->
+            <div id="ov-thumb-list" style="display:flex;flex-direction:column;gap:8px;height:136px;overflow-y:auto;scrollbar-width:none;flex-shrink:0;">
+              <div class="ov-thumb active" data-img="https://www.figma.com/api/mcp/asset/d4f2954b-7988-4962-ab69-85b21e3fbe49">
+                <img src="https://www.figma.com/api/mcp/asset/a05e6cd0-8e24-4ad0-acdd-cfefca892463" style="width:100%;height:100%;object-fit:contain;" alt="">
+              </div>
+              <div class="ov-thumb" data-img="https://www.figma.com/api/mcp/asset/6fc663ae-6fcb-4328-ae09-b41517ae3ff1">
+                <img src="https://www.figma.com/api/mcp/asset/6fc663ae-6fcb-4328-ae09-b41517ae3ff1" style="width:100%;height:100%;object-fit:cover;" alt="">
+              </div>
+              <div class="ov-thumb" data-img="https://www.figma.com/api/mcp/asset/c1fcec9a-c8b3-474d-a1ab-3b09158791d5">
+                <img src="https://www.figma.com/api/mcp/asset/c1fcec9a-c8b3-474d-a1ab-3b09158791d5" style="width:100%;height:100%;object-fit:cover;" alt="">
+              </div>
+              <div class="ov-thumb" data-img="https://www.figma.com/api/mcp/asset/fd1bb8d7-366c-43c3-8100-b7d95f67fbf5">
+                <img src="https://www.figma.com/api/mcp/asset/fd1bb8d7-366c-43c3-8100-b7d95f67fbf5" style="width:100%;height:100%;object-fit:cover;" alt="">
+              </div>
+              <div class="ov-thumb" data-img="https://www.figma.com/api/mcp/asset/5b9989a6-2e77-4481-95a8-8226a4b84ce4">
+                <img src="https://www.figma.com/api/mcp/asset/5b9989a6-2e77-4481-95a8-8226a4b84ce4" style="width:100%;height:100%;object-fit:cover;" alt="">
+              </div>
+            </div>
+            <!-- Down arrow — always reserves space, visible when more thumbs below -->
+            <div id="ov-thumb-down" style="width:40px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;visibility:visible;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <!-- Main image -->
+          <div style="flex:1;position:relative;overflow:hidden;">
+            <img id="ov-main-img" src="https://www.figma.com/api/mcp/asset/d4f2954b-7988-4962-ab69-85b21e3fbe49" style="width:100%;height:100%;object-fit:contain;" alt="PHILIPS EP2331/10 LatteGo">
+            <!-- Zoom icon -->
+            <div style="position:absolute;bottom:4px;right:4px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Lens circle -->
+                <circle cx="9.5" cy="9.5" r="7" stroke="#102A43" stroke-width="1.5"/>
+                <!-- + inside lens -->
+                <path d="M9.5 6.5v6M6.5 9.5h6" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Handle -->
+                <path d="M15 15l3.5 3.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product title -->
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:16px;color:#102A43;line-height:1.2;">PHILIPS EP2331/10 LatteGo</p>
+      </div>
+
+      <!-- ── Summary card ── -->
+      <div style="background:#f5f7fa;border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:6px;">
+        <!-- Rating -->
+        <div style="display:flex;align-items:center;gap:4px;">
+          <span style="font-size:16px;font-weight:700;color:#102A43;">4,5</span>
+          <div style="display:flex;align-items:flex-start;padding-right:3px;">
+            <div style="width:24px;height:24px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
+            <div style="width:24px;height:24px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
+            <div style="width:24px;height:24px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
+            <div style="width:24px;height:24px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="24" height="24" alt=""></div>
+            <div style="flex-shrink:0;margin-right:-3px;">
+              <svg width="24" height="24" viewBox="0 0 18 18">
+                <defs><clipPath id="half-ov"><rect x="0" y="0" width="9" height="18"/></clipPath></defs>
+                <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#E0E0E0" stroke="#854913" stroke-width="0.5" stroke-linejoin="round"/>
+                <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#FFA41C" clip-path="url(#half-ov)"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Review text -->
+        <p style="font-size:14px;color:#102A43;line-height:1.2;">Vielseitiger Kaffeezauber. Breite Getränkeauswahl, individuelle Einstellungen, intuitive Bedienung und hoher Komfort – dieses Modell punktet in allen Bereichen und erreicht im Test einen beeindruckenden zweiten Platz.</p>
+        <!-- Source logos -->
+        <div style="display:flex;align-items:center;gap:4px;padding-left:4px;">
+          <div style="display:flex;padding-right:8px;">
+            <div style="width:18px;height:18px;border-radius:50%;border:1px solid #AEBFD1;overflow:hidden;margin-right:-8px;background:white;flex-shrink:0;"><img src="https://www.figma.com/api/mcp/asset/8a58e78a-ccb7-4ea6-b0a6-d6215c97bf42" width="18" height="18" style="object-fit:cover;width:100%;height:100%;" alt=""></div>
+            <div style="width:18px;height:18px;border-radius:50%;border:1px solid #AEBFD1;overflow:hidden;margin-right:-8px;background:white;flex-shrink:0;"><img src="https://www.figma.com/api/mcp/asset/ad4fc2fd-32e5-404f-8d16-2d70ea08e714" width="18" height="18" style="object-fit:cover;width:100%;height:100%;" alt=""></div>
+            <div style="width:18px;height:18px;border-radius:50%;border:1px solid #AEBFD1;overflow:hidden;margin-right:-8px;background:white;flex-shrink:0;"><img src="https://www.figma.com/api/mcp/asset/efb1259d-fb45-402b-a326-19779f0a859d" width="18" height="18" style="object-fit:cover;width:100%;height:100%;" alt=""></div>
+          </div>
+          <span id="ov-quellen-link" style="font-size:14px;color:#0066CC;line-height:1.5;padding-left:8px;cursor:pointer;">Ergebnis aus 3 Quellen</span>
+        </div>
+      </div>
+
+      <!-- ── Auswertung ── -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;color:#102A43;line-height:1.2;">Auswertung</p>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="flex:1;font-size:14px;color:#102A43;">Preis-Leistung</span>
+          <span style="background:#40cc9e;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;">4,5</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="flex:1;font-size:14px;color:#102A43;">Wartung und Haltbarkeit</span>
+          <span style="background:#40cc9e;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;">4,8</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="flex:1;font-size:14px;color:#102A43;">Typ und Qualität des Zerkleinerers</span>
+          <span style="background:#40cc9e;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;">4,4</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="flex:1;font-size:14px;color:#102A43;">Integriertes Milchsystem</span>
+          <span style="background:#40cc9e;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;">4,1</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start;">
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+            <span style="font-size:14px;color:#102A43;">Pumpendruck und Heizsystem</span>
+            <span id="alt-trigger" style="font-size:14px;color:#0066CC;line-height:1.3;cursor:pointer;text-decoration:underline;">Alternative mit besserer Pumpendruck und Heizsystem</span>
+          </div>
+          <span style="background:#fed9a4;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;flex-shrink:0;">3,8</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span style="flex:1;font-size:14px;color:#102A43;">Anpassung und Programmierung</span>
+          <span style="background:#40cc9e;font-size:14px;color:#102A43;padding:4px 8px;border-radius:4px;">4,2</span>
+        </div>
+        <button id="ov-datenblatt-btn" style="width:100%;height:40px;background:#f5f7fa;border:1px solid #67829d;border-radius:6px;font-size:14px;font-weight:500;font-family:inherit;color:#102A43;cursor:pointer;">Datablatt ansehen</button>
+      </div>
+
+      <!-- ── FAQ ── -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;color:#102A43;line-height:1.2;">Frage zum Produkt</p>
+        <div id="ov-faq">
+
+          <div class="ov-faq-item open" style="border-bottom:1px solid #AEBFD1;">
+            <div class="ov-faq-trigger" style="display:flex;gap:16px;align-items:center;padding:8px 0;cursor:pointer;">
+              <p style="flex:1;font-size:14px;color:#102A43;line-height:1.4;">Ist das LatteGo-System leicht zu reinigen?</p>
+              <svg class="ov-faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="ov-faq-answer">
+              <p style="font-size:14px;color:#3c5c7b;line-height:1.4;">Ja, das LatteGo-System gehört zu den am einfachsten zu reinigenden Milchsystemen auf dem Markt. Es besteht aus nur zwei Teilen – ohne Schläuche oder versteckte Kanäle – und lässt sich in wenigen Sekunden auseinandernehmen. Beide Teile sind spülmaschinenfest. Nach jedem Milchgetränk empfiehlt sich eine kurze Spülung unter fließendem Wasser, um Milchrückstände zu vermeiden.</p>
+            </div>
+          </div>
+
+          <div class="ov-faq-item" style="border-bottom:1px solid #AEBFD1;">
+            <div class="ov-faq-trigger" style="display:flex;gap:16px;align-items:center;padding:8px 0;cursor:pointer;">
+              <p style="flex:1;font-size:14px;color:#102A43;line-height:1.4;">Wie viele Tassen kann man mit einem vollen Tank zubereiten?</p>
+              <svg class="ov-faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="ov-faq-answer">
+              <p style="font-size:14px;color:#3c5c7b;line-height:1.4;">Der 1,8-Liter-Wassertank reicht für ca. 10–15 Tassen Kaffee, je nach Getränkegröße. Für Milchgetränke wird mehr Wasser benötigt. Der Tank lässt sich einfach entnehmen und befüllen.</p>
+            </div>
+          </div>
+
+          <div class="ov-faq-item" style="border-bottom:1px solid #AEBFD1;">
+            <div class="ov-faq-trigger" style="display:flex;gap:16px;align-items:center;padding:8px 0;cursor:pointer;">
+              <p style="flex:1;font-size:14px;color:#102A43;line-height:1.4;">Ist der Zerkleinerer einstellbar?</p>
+              <svg class="ov-faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="ov-faq-answer">
+              <p style="font-size:14px;color:#3c5c7b;line-height:1.4;">Ja, der EP2331/10 verfügt über ein Keramikmahlwerk mit 12 einstellbaren Mahlgradstufen – von fein für intensiven Espresso bis grob für milden Kaffee.</p>
+            </div>
+          </div>
+
+          <div class="ov-faq-item" style="border-bottom:1px solid #AEBFD1;">
+            <div class="ov-faq-trigger" style="display:flex;gap:16px;align-items:center;padding:8px 0;cursor:pointer;">
+              <p style="flex:1;font-size:14px;color:#102A43;line-height:1.4;">Was ist die Herstellergarantie?</p>
+              <svg class="ov-faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="ov-faq-answer">
+              <p style="font-size:14px;color:#3c5c7b;line-height:1.4;">Philips gewährt 2 Jahre Herstellergarantie. Bei Registrierung kann sie auf bis zu 3 Jahre verlängert werden. Die Garantie deckt Material- und Verarbeitungsfehler ab.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Quellen ── -->
+      <div id="ov-quellen" style="display:flex;flex-direction:column;gap:10px;">
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:20px;color:#102A43;line-height:1.2;">Quelle</p>
+
+        <div style="background:#f5f7fa;border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <p style="flex:1;font-size:14px;color:#102A43;line-height:1.3;"><strong>Stiftung Warentest</strong><br><span style="font-weight:400;">20.1.2025</span></p>
+            <img src="https://www.figma.com/api/mcp/asset/817e0b24-6b34-40bd-a008-b416a1be90b0" style="width:100px;height:auto;object-fit:contain;mix-blend-mode:multiply;flex-shrink:0;" alt="Stiftung Warentest">
+          </div>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">„befriedigend" (2,8)</p>
+          <p style="font-size:14px;color:#102A43;line-height:1.2;">Langsamer Aufheiz- und Bezugsprozess. Mäßiger Espresso und enttäuschender Cappuccino, Temperatur kaum variierbar. Nur vier Getränkeoptionen, kein separater Milchschaum.</p>
+          <p style="font-size:14px;color:#0066CC;line-height:1.2;">Zu den Test</p>
+        </div>
+
+        <div style="background:#f5f7fa;border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <p style="flex:1;font-size:14px;color:#102A43;line-height:1.3;"><strong>Computer Bild</strong><br><span style="font-weight:400;">2.11.2024</span></p>
+            <img src="https://www.figma.com/api/mcp/asset/9abe8ad4-2ee2-460c-a3cb-a77bee58e57f" style="width:100px;height:auto;object-fit:contain;mix-blend-mode:multiply;flex-shrink:0;" alt="Computer Bild">
+          </div>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">Dieser Kaffeevollautomat ist seinen Preis wert</p>
+          <p style="font-size:14px;color:#102A43;line-height:1.2;">Beim Einstiegs-Kaffeevollautomaten von Philips gibt es wenig zu meckern. Dafür lässt sich der 2300 Series LatteGo einfach bedienen und reinigen, liefert guten Kaffee und verfügt über das bewährte Becher-Milchsystem ohne Schlauch.</p>
+          <p style="font-size:14px;color:#0066CC;line-height:1.2;">Zu den Test</p>
+        </div>
+
+        <div style="background:#f5f7fa;border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <p style="flex:1;font-size:14px;color:#102A43;line-height:1.3;"><strong>Testventure</strong><br><span style="font-weight:400;">03.9.2025</span></p>
+            <img src="https://www.figma.com/api/mcp/asset/16a3a6f0-4e5b-4b46-b257-ef30c4b6e506" style="width:100px;height:auto;object-fit:contain;mix-blend-mode:multiply;flex-shrink:0;" alt="Testventure">
+          </div>
+          <p style="font-size:14px;font-weight:600;color:#102A43;line-height:1.2;">„sehr gut" (4,3 von 5 Sternen)</p>
+          <p style="font-size:14px;color:#102A43;line-height:1.2;">Plus: Hohe Qualität der Spezialitäten; Milchschaum wird erfreulich cremig; simpel zu reinigen und zu bedienen; üppiger Konfigurationsumfang; Verarbeitung auf wertigem Niveau.<br>Minus: Recht hohe Anschaffungskosten.</p>
+          <p style="font-size:14px;color:#0066CC;line-height:1.2;">Zu den Test</p>
+        </div>
+
+      </div>
+    </div><!-- /content -->
+  </div><!-- /panel -->
+</div><!-- /backdrop -->
+
+<script>
+(function () {
+  var backdrop = document.getElementById('ov-backdrop');
+  var panel    = document.getElementById('ov-panel');
+
+  function openOv() {
+    panel.scrollTop = 0;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-open');
+        panel.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeOv() {
+    panel.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+  }
+
+  document.getElementById('ov-open-btn').addEventListener('click', openOv);
+  document.getElementById('ov-close').addEventListener('click', closeOv);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeOv();
+  });
+  document.getElementById('ov-quellen-link').addEventListener('click', function () {
+    var panel      = document.getElementById('ov-panel');
+    var target     = document.getElementById('ov-quellen');
+    var stickyBar  = panel.querySelector('[style*="position:sticky"]');
+    var stickyH    = stickyBar ? stickyBar.offsetHeight : 0;
+    panel.scrollTo({ top: target.offsetTop - stickyH - 8, behavior: 'smooth' });
+  });
+
+  document.getElementById('ov-datenblatt-btn').addEventListener('click', function () {
+    closeOv();
+    setTimeout(function () {
+      document.getElementById('datenblatt').scrollIntoView({ behavior: 'smooth' });
+    }, 350);
+  });
+
+  // Image slider
+  var mainImg   = document.getElementById('ov-main-img');
+  var thumbList = document.getElementById('ov-thumb-list');
+  var thumbUp   = document.getElementById('ov-thumb-up');
+  var thumbDown = document.getElementById('ov-thumb-down');
+
+  document.querySelectorAll('#ov-panel .ov-thumb').forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      document.querySelectorAll('#ov-panel .ov-thumb').forEach(function (t) { t.classList.remove('active'); });
+      thumb.classList.add('active');
+      mainImg.src = thumb.getAttribute('data-img');
+    });
+  });
+
+  function updateThumbArrows() {
+    var st  = thumbList.scrollTop;
+    var max = thumbList.scrollHeight - thumbList.clientHeight;
+    thumbUp.style.visibility   = st > 4       ? 'visible' : 'hidden';
+    thumbDown.style.visibility = st < max - 4 ? 'visible' : 'hidden';
+  }
+
+  thumbList.addEventListener('scroll', updateThumbArrows);
+  // Re-check once images have loaded so scroll metrics are accurate
+  window.addEventListener('load', updateThumbArrows);
+
+  // 48px = 40px thumb + 8px gap
+  thumbUp.addEventListener('click',   function () { thumbList.scrollBy({ top: -48, behavior: 'smooth' }); });
+  thumbDown.addEventListener('click', function () { thumbList.scrollBy({ top:  48, behavior: 'smooth' }); });
+
+  // FAQ accordion — close others when opening one
+  document.querySelectorAll('#ov-faq .ov-faq-trigger').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var item = trigger.closest('.ov-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('#ov-faq .ov-faq-item').forEach(function (i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+
+<!-- ══════════════════════════════════ ZOOM OVERLAY ═════════════════════════════════════ -->
+<style>
+  #zoom-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(16,42,67,0.9);
+    z-index: 80;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #zoom-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  #zoom-panel {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    width: calc(100vw - 30px);
+    max-width: 460px;
+    padding: 44px 16px 16px;
+    position: relative;
+    display: flex; flex-direction: column; gap: 12px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  #zoom-backdrop.is-open #zoom-panel { opacity: 1; transform: scale(1); }
+  .zoom-thumb { border:1px solid #aebfd1; border-radius:4px; padding:4px; box-sizing:border-box; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:white; flex-shrink:0; }
+  .zoom-thumb.active { border:2px solid #3c5c7b; }
+  #zoom-thumb-list { display:flex; flex-direction:row; gap:8px; overflow-x:auto; scrollbar-width:none; }
+  #zoom-thumb-list::-webkit-scrollbar { display:none; }
+</style>
+
+<div id="zoom-backdrop">
+  <div id="zoom-panel">
+
+    <!-- Close button -->
+    <button id="zoom-close" style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;border:1px solid #4d6c89;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- Swipeable main image -->
+    <div style="position:relative;height:300px;overflow:hidden;border-radius:4px;">
+      <div id="zoom-track" style="display:flex;height:100%;transition:transform 0.3s ease;will-change:transform;">
+        <div style="flex-shrink:0;width:100%;height:100%;"><img src="https://www.figma.com/api/mcp/asset/d4f2954b-7988-4962-ab69-85b21e3fbe49" style="width:100%;height:100%;object-fit:contain;" alt=""></div>
+        <div style="flex-shrink:0;width:100%;height:100%;"><img src="https://www.figma.com/api/mcp/asset/6fc663ae-6fcb-4328-ae09-b41517ae3ff1" style="width:100%;height:100%;object-fit:contain;" alt=""></div>
+        <div style="flex-shrink:0;width:100%;height:100%;"><img src="https://www.figma.com/api/mcp/asset/c1fcec9a-c8b3-474d-a1ab-3b09158791d5" style="width:100%;height:100%;object-fit:contain;" alt=""></div>
+        <div style="flex-shrink:0;width:100%;height:100%;"><img src="https://www.figma.com/api/mcp/asset/fd1bb8d7-366c-43c3-8100-b7d95f67fbf5" style="width:100%;height:100%;object-fit:contain;" alt=""></div>
+        <div style="flex-shrink:0;width:100%;height:100%;"><img src="https://www.figma.com/api/mcp/asset/5b9989a6-2e77-4481-95a8-8226a4b84ce4" style="width:100%;height:100%;object-fit:contain;" alt=""></div>
+      </div>
+      <!-- Prev arrow -->
+      <button id="zoom-prev" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.85);border:none;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:none;align-items:center;justify-content:center;cursor:pointer;padding:0;z-index:2;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <!-- Next arrow -->
+      <button id="zoom-next" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.85);border:none;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;z-index:2;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Horizontal thumbnail strip -->
+    <div id="zoom-thumb-list">
+      <div class="zoom-thumb active" data-index="0">
+        <img src="https://www.figma.com/api/mcp/asset/a05e6cd0-8e24-4ad0-acdd-cfefca892463" style="width:100%;height:100%;object-fit:contain;" alt="">
+      </div>
+      <div class="zoom-thumb" data-index="1">
+        <img src="https://www.figma.com/api/mcp/asset/6fc663ae-6fcb-4328-ae09-b41517ae3ff1" style="width:100%;height:100%;object-fit:cover;" alt="">
+      </div>
+      <div class="zoom-thumb" data-index="2">
+        <img src="https://www.figma.com/api/mcp/asset/c1fcec9a-c8b3-474d-a1ab-3b09158791d5" style="width:100%;height:100%;object-fit:cover;" alt="">
+      </div>
+      <div class="zoom-thumb" data-index="3">
+        <img src="https://www.figma.com/api/mcp/asset/fd1bb8d7-366c-43c3-8100-b7d95f67fbf5" style="width:100%;height:100%;object-fit:cover;" alt="">
+      </div>
+      <div class="zoom-thumb" data-index="4">
+        <img src="https://www.figma.com/api/mcp/asset/5b9989a6-2e77-4481-95a8-8226a4b84ce4" style="width:100%;height:100%;object-fit:cover;" alt="">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var backdrop   = document.getElementById('zoom-backdrop');
+  var track      = document.getElementById('zoom-track');
+  var prevBtn    = document.getElementById('zoom-prev');
+  var nextBtn    = document.getElementById('zoom-next');
+  var zThumbList = document.getElementById('zoom-thumb-list');
+  var zThumbs    = document.querySelectorAll('#zoom-thumb-list .zoom-thumb');
+
+  var zoomImages = [
+    'https://www.figma.com/api/mcp/asset/d4f2954b-7988-4962-ab69-85b21e3fbe49',
+    'https://www.figma.com/api/mcp/asset/6fc663ae-6fcb-4328-ae09-b41517ae3ff1',
+    'https://www.figma.com/api/mcp/asset/c1fcec9a-c8b3-474d-a1ab-3b09158791d5',
+    'https://www.figma.com/api/mcp/asset/fd1bb8d7-366c-43c3-8100-b7d95f67fbf5',
+    'https://www.figma.com/api/mcp/asset/5b9989a6-2e77-4481-95a8-8226a4b84ce4'
+  ];
+  var zoomIndex = 0;
+
+  function goTo(index) {
+    zoomIndex = Math.max(0, Math.min(index, zoomImages.length - 1));
+    track.style.transform = 'translateX(-' + (zoomIndex * 100) + '%)';
+
+    // Prev / Next arrows
+    prevBtn.style.display = zoomIndex > 0                      ? 'flex' : 'none';
+    nextBtn.style.display = zoomIndex < zoomImages.length - 1 ? 'flex' : 'none';
+
+    // Thumbnail active state + scroll into view (48px = 40px + 8px gap)
+    zThumbs.forEach(function (t, i) {
+      t.classList.toggle('active', i === zoomIndex);
+    });
+    zThumbList.scrollTo({ left: zoomIndex * 48 - 16, behavior: 'smooth' });
+
+    // Sync back to ov-panel
+    var ovMainImg = document.getElementById('ov-main-img');
+    if (ovMainImg) ovMainImg.src = zoomImages[zoomIndex];
+    document.querySelectorAll('#ov-thumb-list .ov-thumb').forEach(function (t, i) {
+      t.classList.toggle('active', i === zoomIndex);
+    });
+  }
+
+  // Thumbnail clicks
+  zThumbs.forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      goTo(parseInt(thumb.getAttribute('data-index')));
+    });
+  });
+
+  // Prev / Next
+  prevBtn.addEventListener('click', function () { goTo(zoomIndex - 1); });
+  nextBtn.addEventListener('click', function () { goTo(zoomIndex + 1); });
+
+  // Touch swipe on main image
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   function (e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(zoomIndex + (dx < 0 ? 1 : -1));
+  });
+
+  // Open — starts at current ov-panel image
+  function openZoom() {
+    var ovMainImg = document.getElementById('ov-main-img');
+    var startIdx  = 0;
+    if (ovMainImg) {
+      var src = ovMainImg.src.split('?')[0];
+      var found = zoomImages.indexOf(src);
+      if (found >= 0) startIdx = found;
+    }
+    track.style.transition = 'none';
+    goTo(startIdx);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        track.style.transition = 'transform 0.3s ease';
+        backdrop.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeZoom() { backdrop.classList.remove('is-open'); }
+
+  document.getElementById('zoom-close').addEventListener('click', closeZoom);
+  backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeZoom(); });
+
+  document.getElementById('ov-main-img').addEventListener('click', openZoom);
+  document.getElementById('ov-main-img').style.cursor = 'zoom-in';
 })();
 </script>
 
@@ -1775,6 +2279,298 @@
   closeBtn.addEventListener('click', closeOverlay);
   backdrop.addEventListener('click', function (e) {
     if (e.target === backdrop) closeOverlay();
+  });
+})();
+</script>
+
+<!-- ══════════════════════════════════ OVERLAY ALTERNATIVE ═══════════════════════════════ -->
+<style>
+  #alt-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(16, 42, 67, 0.9);
+    z-index: 60;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #alt-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  #alt-panel {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 88vw; max-width: 400px;
+    background: white; border-radius: 12px 0 0 12px;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.18);
+    z-index: 70;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #alt-panel.is-open { transform: translateX(0); }
+  .alt-card {
+    flex-shrink: 0; width: 180px;
+    background: white; border-radius: 8px;
+    display: flex; flex-direction: column;
+    scroll-snap-align: start;
+  }
+  .alt-card-img {
+    height: 136px; border-radius: 8px; padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse at center, #ffffff 42%, #f5f7fa 100%);
+  }
+  .alt-carousel { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  .alt-carousel::-webkit-scrollbar { display: none; }
+  .alt-dot { width: 8px; height: 8px; border-radius: 50%; cursor: pointer; transition: background 0.2s; }
+</style>
+
+<div id="alt-backdrop">
+  <div id="alt-panel">
+
+    <!-- Sticky close -->
+    <div style="position:sticky;top:0;z-index:10;background:white;display:flex;justify-content:flex-end;padding:16px 16px 0;">
+      <button id="alt-close" style="width:28px;height:28px;border-radius:50%;border:1px solid #4d6c89;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="#4d6c89" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div style="padding:16px;display:flex;flex-direction:column;gap:20px;">
+
+      <!-- ── Current product header ── -->
+      <div style="display:flex;gap:0;align-items:flex-start;border:4px solid white;border-radius:8px;padding-bottom:8px;">
+        <!-- Product image -->
+        <div style="flex:1;height:136px;border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,#ffffff 42%,#f5f7fa 100%);min-width:0;">
+          <img src="https://www.figma.com/api/mcp/asset/bb139a03-3a8a-47e5-b621-78f0e85f5efd" style="width:100%;height:100%;object-fit:contain;mix-blend-multiply;" alt="PHILIPS EP2331/10">
+          <!-- Sale badge -->
+          <div style="position:absolute;top:5px;left:0;background:#0066CC;display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:0 20px 20px 0;">
+            <span style="font-size:14px;font-weight:500;color:white;white-space:nowrap;">-25%</span>
+            <div style="width:16px;height:16px;border:1px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:9px;color:white;font-weight:600;line-height:1;">?</span>
+            </div>
+          </div>
+        </div>
+        <!-- Info block -->
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px;min-width:0;">
+          <p style="font-size:14px;font-weight:500;color:#0066CC;line-height:1.4;overflow:hidden;text-overflow:ellipsis;">PHILIPS EP2331/10 LatteGo</p>
+          <!-- Stars 17px -->
+          <div style="display:flex;align-items:center;gap:4px;">
+            <span style="font-size:12px;font-weight:500;color:#102A43;white-space:nowrap;">4,5</span>
+            <div style="display:flex;align-items:flex-start;padding-right:3px;">
+              <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+              <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+              <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+              <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+              <div style="flex-shrink:0;margin-right:-3px;">
+                <svg width="17" height="17" viewBox="0 0 18 18">
+                  <defs><clipPath id="half-alt"><rect x="0" y="0" width="9" height="18"/></clipPath></defs>
+                  <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#E0E0E0" stroke="#854913" stroke-width="0.5" stroke-linejoin="round"/>
+                  <path d="M9 1.5l2.32 4.7 5.18.75-3.75 3.65.88 5.15L9 13.27l-4.63 2.48.88-5.15L1.5 6.95l5.18-.75L9 1.5z" fill="#FFA41C" clip-path="url(#half-alt)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Price -->
+          <div>
+            <p style="font-size:20px;color:#102A43;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+              <span style="font-size:12px;">ab</span> <strong style="font-weight:600;">375,53 €</strong>
+            </p>
+          </div>
+          <!-- Offers pill -->
+          <div style="display:flex;align-items:center;gap:4px;">
+            <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">12</span>
+            <span style="font-size:12px;color:#102A43;white-space:nowrap;">Angebote vergleichen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Alternative section ── -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <p style="font-size:16px;color:#102A43;line-height:1.3;">Alternative mit besserer Pumpendruck und Heizsystem:</p>
+
+        <!-- Carousel wrapper -->
+        <div style="position:relative;">
+          <div id="alt-carousel" class="alt-carousel">
+
+            <!-- Card 1 — De Longhi Eletta Explore -->
+            <div class="alt-card">
+              <div class="alt-card-img">
+                <img src="https://www.figma.com/api/mcp/asset/76a7050f-dc59-4e31-86d2-9d4daed62542" style="height:112px;width:100%;object-fit:contain;mix-blend-multiply;" alt="">
+              </div>
+              <div style="padding:8px;display:flex;flex-direction:column;gap:4px;">
+                <p style="font-size:14px;font-weight:500;color:#0066CC;line-height:1.4;overflow:hidden;text-overflow:ellipsis;">De Longhi Eletta Explore ECAM450.55</p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:12px;font-weight:500;color:#102A43;">3,5</span>
+                  <div style="display:flex;align-items:flex-start;">
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star-empty.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star-empty.svg" width="17" height="17" alt=""></div>
+                  </div>
+                </div>
+                <p style="font-size:20px;color:#102A43;line-height:1.2;white-space:nowrap;"><span style="font-size:12px;">ab</span> <strong style="font-weight:600;">699,00 €</strong></p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">12</span>
+                  <span style="font-size:12px;color:#102A43;white-space:nowrap;">Angebote vergleichen</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 — De Longhi Rivelia -->
+            <div class="alt-card">
+              <div class="alt-card-img">
+                <img src="https://www.figma.com/api/mcp/asset/267ec2b4-901b-46f8-89c3-3909a170b2f7" style="height:112px;width:100%;object-fit:contain;mix-blend-multiply;" alt="">
+              </div>
+              <div style="padding:8px;display:flex;flex-direction:column;gap:4px;">
+                <p style="font-size:14px;font-weight:500;color:#0066CC;line-height:1.4;overflow:hidden;text-overflow:ellipsis;">De Longhi Rivelia EXAM 440.55.BG</p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:12px;font-weight:500;color:#102A43;">5,0</span>
+                  <div style="display:flex;align-items:flex-start;">
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                  </div>
+                  <span style="font-size:12px;color:#3c5c7b;">(2)</span>
+                </div>
+                <p style="font-size:20px;color:#102A43;line-height:1.2;white-space:nowrap;"><span style="font-size:12px;">ab</span> <strong style="font-weight:600;">649,00 €</strong></p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">21</span>
+                  <span style="font-size:12px;color:#102A43;white-space:nowrap;">Angebote vergleichen</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 — Philips Aromis -->
+            <div class="alt-card">
+              <div class="alt-card-img">
+                <img src="https://www.figma.com/api/mcp/asset/d31d39bb-54de-4f83-b22a-27cba813b9bc" style="height:112px;width:100%;object-fit:contain;mix-blend-multiply;" alt="">
+              </div>
+              <div style="padding:8px;display:flex;flex-direction:column;gap:4px;">
+                <p style="font-size:14px;font-weight:500;color:#0066CC;line-height:1.4;overflow:hidden;text-overflow:ellipsis;">Philips Café Aromis Series 8000 EP8757/20</p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:12px;font-weight:500;color:#102A43;">4,3</span>
+                  <div style="display:flex;align-items:flex-start;">
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star-empty.svg" width="17" height="17" alt=""></div>
+                  </div>
+                  <span style="font-size:12px;color:#3c5c7b;">(787)</span>
+                </div>
+                <p style="font-size:20px;color:#102A43;line-height:1.2;white-space:nowrap;"><span style="font-size:12px;">ab</span> <strong style="font-weight:600;">979,00 €</strong></p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">11</span>
+                  <span style="font-size:12px;color:#102A43;white-space:nowrap;">Angebote vergleichen</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 — Philips 5500 -->
+            <div class="alt-card">
+              <div class="alt-card-img">
+                <img src="https://www.figma.com/api/mcp/asset/cb571285-83c5-4029-823e-92c57282a15d" style="height:112px;width:100%;object-fit:contain;mix-blend-multiply;" alt="">
+              </div>
+              <div style="padding:8px;display:flex;flex-direction:column;gap:4px;">
+                <p style="font-size:14px;font-weight:500;color:#0066CC;line-height:1.4;overflow:hidden;text-overflow:ellipsis;">Philips Series 5500 EP5547/90</p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="font-size:12px;font-weight:500;color:#102A43;">3,9</span>
+                  <div style="display:flex;align-items:flex-start;">
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star.svg" width="17" height="17" alt=""></div>
+                    <div style="width:17px;height:17px;flex-shrink:0;margin-right:-3px;"><img src="img/icons/icon-star-empty.svg" width="17" height="17" alt=""></div>
+                  </div>
+                  <span style="font-size:12px;color:#3c5c7b;">(15)</span>
+                </div>
+                <p style="font-size:20px;color:#102A43;line-height:1.2;white-space:nowrap;"><span style="font-size:12px;">ab</span> <strong style="font-weight:600;">559,00 €</strong></p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <span style="background:#0066CC;color:white;font-size:12px;font-weight:700;padding:2px 6px;border-radius:20px;min-width:22px;text-align:center;line-height:1.4;">41</span>
+                  <span style="font-size:12px;color:#102A43;white-space:nowrap;">Angebote vergleichen</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Left arrow -->
+          <button id="alt-arrow-left" style="position:absolute;left:4px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:none;box-shadow:0 4px 8px rgba(0,0,0,0.35);display:none;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <!-- Right arrow -->
+          <button id="alt-arrow" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:none;box-shadow:0 4px 8px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Dots -->
+        <div id="alt-dots" style="display:flex;gap:12px;align-items:center;justify-content:center;margin-top:4px;">
+          <div class="alt-dot" data-index="0" style="background:#40cc9e;"></div>
+          <div class="alt-dot" data-index="1" style="background:#AEBFD1;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var backdrop   = document.getElementById('alt-backdrop');
+  var panel      = document.getElementById('alt-panel');
+  var carousel   = document.getElementById('alt-carousel');
+  var arrowRight = document.getElementById('alt-arrow');
+  var arrowLeft  = document.getElementById('alt-arrow-left');
+  var dots       = document.querySelectorAll('#alt-dots .alt-dot');
+
+  function openAlt() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-open');
+        panel.classList.add('is-open');
+      });
+    });
+  }
+
+  function closeAlt() {
+    panel.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+  }
+
+  document.getElementById('alt-trigger').addEventListener('click', openAlt);
+  document.getElementById('alt-close').addEventListener('click', closeAlt);
+  backdrop.addEventListener('click', function (e) {
+    if (e.target === backdrop) closeAlt();
+  });
+
+  // Update arrows visibility + dots on scroll
+  function updateCarousel() {
+    var sl  = carousel.scrollLeft;
+    var max = carousel.scrollWidth - carousel.clientWidth;
+
+    arrowLeft.style.display  = sl > 4         ? 'flex' : 'none';
+    arrowRight.style.display = sl < max - 4   ? 'flex' : 'none';
+
+    var index = Math.round(sl / 188) >= 2 ? 1 : 0;
+    dots.forEach(function (d, i) {
+      d.style.background = i === index ? '#40cc9e' : '#AEBFD1';
+    });
+  }
+
+  carousel.addEventListener('scroll', updateCarousel);
+
+  // Arrow clicks
+  arrowRight.addEventListener('click', function () {
+    carousel.scrollBy({ left: 188, behavior: 'smooth' });
+  });
+  arrowLeft.addEventListener('click', function () {
+    carousel.scrollBy({ left: -188, behavior: 'smooth' });
+  });
+
+  // Dots click to scroll
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var idx = parseInt(dot.getAttribute('data-index'));
+      carousel.scrollTo({ left: idx * 376, behavior: 'smooth' });
+    });
   });
 })();
 </script>
