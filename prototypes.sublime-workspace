@@ -1,0 +1,502 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bl",
+				"blue"
+			],
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"tra",
+				"translateX()"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"--typo-weight",
+				"--typo-weight-bold"
+			],
+			[
+				"inline",
+				"inline-flex"
+			],
+			[
+				"pa",
+				"padding-right"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"fle",
+				"flex-direction"
+			],
+			[
+				"back",
+				"background-repeat"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"flex",
+				"flex-direction"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"c",
+				"cover"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"--typo",
+				"--typo-size-medium-up"
+			],
+			[
+				"spa",
+				"space-between"
+			],
+			[
+				"grid-te",
+				"grid-template-rows"
+			],
+			[
+				"bord",
+				"border-bottom"
+			],
+			[
+				"ar",
+				"space-around"
+			],
+			[
+				"--color-en",
+				"--color-neutral-800"
+			],
+			[
+				"--color-seco",
+				"--color-secondary-500"
+			],
+			[
+				"--color-yel",
+				"--color-yellow-dark"
+			],
+			[
+				"--color-neutra",
+				"--color-neutral-400"
+			],
+			[
+				"--color-li",
+				"--color-light-purple"
+			],
+			[
+				"--color-blue",
+				"--color-blue-400"
+			],
+			[
+				"--color-pri",
+				"--color-primary-500"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"co",
+				"component"
+			],
+			[
+				"compo",
+				"component-library"
+			],
+			[
+				"pro",
+				"proprieties"
+			],
+			[
+				"neutra",
+				"neutral-200"
+			],
+			[
+				"neu",
+				"neutral-600"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"page",
+				"pageTitleContent"
+			],
+			[
+				"DO",
+				"Domparser"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pro",
+				"Project: Add Folder"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"HTML2Text: Convert selection"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa",
+				"Install Package Control"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/gwendal.vernay/Documents/Claude/prototypes/strategie tag"
+	],
+	"file_history":
+	[
+		"/Users/gwendal.vernay/Documents/Claude/TBW Design System/design.md",
+		"/Users/gwendal.vernay/Documents/Claude/prototypes/strategie tag/product-data.js",
+		"/Users/gwendal.vernay/Documents/Github/claude-tbw/ab-test-analysis/scripts/build_html_report.py",
+		"/Users/gwendal.vernay/Documents/Github/claude-tbw/a-b-test-auswertung/ab-test-analysis-skill.md",
+		"/Users/gwendal.vernay/Documents/Github/claude-tbw/a-b-test-auswertung/claude.md",
+		"/Users/gwendal.vernay/Documents/Github/claude-tbw/skills/UX-evaluation.md",
+		"/Users/gwendal.vernay/Desktop/ab-tests-instructions.txt",
+		"/Users/gwendal.vernay/Downloads/fe4594-analysis.tsx",
+		"/Users/gwendal.vernay/Downloads/analyse-reviews-concurrents.md",
+		"/Users/gwendal.vernay/Documents/Claude/Preisevergleich/claude.md",
+		"/Users/gwendal.vernay/Desktop/shopudio-token.json",
+		"/Users/gwendal.vernay/Documents/Github/figma-design-token/TB-tokens.json",
+		"/Users/gwendal.vernay/Desktop/img.svg",
+		"/Users/gwendal.vernay/Desktop/cc.xml",
+		"/Users/gwendal.vernay/Desktop/webseite",
+		"/Users/gwendal.vernay/Desktop/Interne Ressourcen & Dokumente - Produktentwicklung - Confluence.webloc",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/reviews-analysis.html",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/google-product-review/l5-category-recommandations.html",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/google-product-review/l5-category-recommandations.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/tb/_tb-font.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_card.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/tb/_tb-style.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/knacss.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_badge.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_tb-components.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/utils/_utils-global.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_info-box.scss",
+		"/Users/gwendal.vernay/Desktop/plug.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_tabs.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/abstracts/_variables-sass.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/simple-components.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/opinions-analysis.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/product-tile.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/google-product-review/dynamic-products.pug",
+		"/Users/gwendal.vernay/Desktop/digitalo.svg",
+		"/Users/gwendal.vernay/Desktop/logo.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/product-tile.html",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/base.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_accordeon.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_button.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_offers-box.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/base/_layout.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/teatime-teaser.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/base/_reset-base.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/abstracts/_mixins-sass.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_teatime-teaser.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/utils/_utils-spacers.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_icons.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/config.codekit3",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/knacss.css",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/components/_icons.css",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/no-star.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/structur/omb.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/structur/tm.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/structur/mb.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/structur/tomb.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/rama/structur/tmb.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/google-product-review/l5-category-recommandations-component.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/dynamic-products.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/evaluation/not-available.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/evaluation/available.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/evaluation/available.html",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/evaluation/not-available.html",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/utils/grillade.scss",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/tooltip.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/google-product-review/l5-category-recommandations",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/minus-soft.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/plus-soft.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/cross.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/check.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/badge.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/template.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/badge/badge-mini.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/button.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/badge/badge.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/evaluation/not-avaible.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/review.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/star.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/compare.svg",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/icons/compare.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/badge.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/templates/components/badge/badge-no-note.pug",
+		"/Users/gwendal.vernay/Documents/Github/design-template/sass/tb/tb-style.scss",
+		"/Users/gwendal.vernay/Desktop/test.html",
+		"/Users/gwendal.vernay/Documents/Github/product-tile/product-tile-structure.json",
+		"/Users/gwendal.vernay/Documents/Github/figma-design-token/token-semantic.json",
+		"/Users/gwendal.vernay/Documents/Github/product-tile-structure/product-tile-structure.json",
+		"/Users/gwendal.vernay/Documents/Github/figma-design-token/token-core.json",
+		"/Users/gwendal.vernay/Documents/Github/token/token-core.json",
+		"/Users/gwendal.vernay/Documents/Github/token/token-semantic.json",
+		"/Users/gwendal.vernay/Documents/Github/token/semantic-token.json",
+		"/Users/gwendal.vernay/Documents/Github/token/core token.json",
+		"/Users/gwendal.vernay/Documents/Github/Product-list-parser/token/core token.json",
+		"/Users/gwendal.vernay/Desktop/test-list.html",
+		"/Users/gwendal.vernay/Desktop/parser.html",
+		"/Users/gwendal.vernay/Library/Application Support/Sublime Text/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/gwendal.vernay/Documents/chart.txt"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"headinf.de",
+			"primary\\-400"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/Users/gwendal.vernay/Documents/Claude/prototypes/strategie tag"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 108.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"config.codekit3"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 304.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 461.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 336.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
